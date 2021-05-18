@@ -1,0 +1,3 @@
+1. Django Backend Accounts app 관련 model 생성 및 기본적인 crud 구현
+2. 프론트 회원가입 페이지 생성
+3. 프론트 vue session 사용해보기
