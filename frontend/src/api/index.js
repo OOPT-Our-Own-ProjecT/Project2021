@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 function registerUser(userData){
-    const url = 'http://localhost:8081/signUp';
+    console.log(userData);
+    const url = 'http://localhost:8080/account/signUp';
     return axios.post(url, userData);
 }
 

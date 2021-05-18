@@ -3,62 +3,50 @@
         <strong>회원가입 페이지</strong>
         <form @submit.prevent="submitForm">
             <div>
-                <label for="id">ID</label>
-                <input type="text" id="id" v-model="id"/>
-            </div>
-            <div>
-                <label for="name">이름</label>
-                <input type="text" id="name" v-model="name"/>
+                <label for="email">ID</label>
+                <input type="text" id="email" v-model="email"/>
             </div>
             <div>
                 <label for="password">비밀번호</label>
-                <input type="password" id="password" v-model="password"/>
+                <input type="password" id="pw" v-model="pw"/>
             </div>
             <div>
-                <label for="passwordConfirm">비밀번호 확인</label>
-                <input type="password" id="passwordConfirm" v-model="passwordConfirm"/>
-            </div>
+                <label for="nickname">이름</label>
+                <input type="text" id="nickname" v-model="nickname"/>
+            </div>      
             <button type="submit">회원가입</button>
-            <p>{{ logMessage }}</p>
         </form>
-    </div>
-    
+    </div>   
 </template>
 
 <script>
 import {registerUser} from '@/api/index';
     export default {
-        //name: 'SignupForm',
         data() {
             return {
-                id: '',
-                name: '',
-                password: '',
-                passwordConfirm: '',
-                logMessage: '',
-
+                email: '',
+                pw: '',
+                nickname: '',
             };
         },
         methods: {
             async submitForm() {
                 const userData = {
-                    id: this.id,
-                    name: this.name,
-                    password: this.password,
-                    passwordConfirm: this.passwordConfirm,
+                    email: this.email,     
+                    pw: this.pw,
+                    nickname: this.nickname,
                 };
                 const { data } = await registerUser(userData);
-                console.log(data.id);
-                console.log(data.name);
+                console.log(data.email);
+                console.log(data.nickname);
                 //this.logMessage = '${data.id} 님이 가입되었습니다.';
 
                 this.initForm();
             },
             initForm(){
-                this.id='';
-                this.name='';
-                this.password='';
-                this.passwordConfirm='';
+                this.email='';
+                this.pw='';
+                this.nickname='';
             },
             
         },
