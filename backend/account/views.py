@@ -40,5 +40,3 @@ def signUp(request):
     else:
         return Response("이미 사용된 이메일입니다.", status = status.HTTP_400_BAD_REQUEST)
 
-
-
