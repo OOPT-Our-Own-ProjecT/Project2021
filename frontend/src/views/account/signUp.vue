@@ -1,24 +1,54 @@
 <template>
-    <div>
+    <div class="container">
         <strong>회원가입 페이지</strong>
-    </div>
+        <form @submit.prevent="submitForm">
+            <div>
+                <label for="email">ID</label>
+                <input type="text" id="email" v-model="email"/>
+            </div>
+            <div>
+                <label for="password">비밀번호</label>
+                <input type="password" id="pw" v-model="pw"/>
+            </div>
+            <div>
+                <label for="nickname">이름</label>
+                <input type="text" id="nickname" v-model="nickname"/>
+            </div>      
+            <button type="submit">회원가입</button>
+        </form>
+    </div>   
 </template>
 
 <script>
+import {registerUser} from '@/api/index';
     export default {
-        data: () => ({
-            userData : {
-                id : "",
-                pw :  "",
-            }
-        }),
-
+        data() {
+            return {
+                email: '',
+                pw: '',
+                nickname: '',
+            };
+        },
         methods: {
-            login(){
-                console.log("로그인 메소드 실행")
-                console.log(this.userData.id)
-                console.log(this.userData.pw)
-            }
+            async submitForm() {
+                const userData = {
+                    email: this.email,     
+                    pw: this.pw,
+                    nickname: this.nickname,
+                };
+                const { data } = await registerUser(userData);
+                console.log(data.email);
+                console.log(data.nickname);
+                //this.logMessage = '${data.id} 님이 가입되었습니다.';
+
+                this.initForm();
+            },
+            initForm(){
+                this.email='';
+                this.pw='';
+                this.nickname='';
+            },
+            
         },
     }
 </script>

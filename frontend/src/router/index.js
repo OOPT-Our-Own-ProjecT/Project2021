@@ -17,6 +17,8 @@ const routes = [
         path: '/signUp',
         name: 'SignUp',
         component: SignUp
+        //코드 스플리팅 적용
+        //component: () => import('@/views/account/signUp.vue'),
     },
 ]
 //path 와 component 엮어주는 부분.
