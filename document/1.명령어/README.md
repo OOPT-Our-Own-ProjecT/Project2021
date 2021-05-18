@@ -31,4 +31,5 @@
 - python manage.py makemigrations : db 테이블 변경 시 해당 app 단의 migrations을 변경하는 작업
 - python manage.py migrate : 최신 버전 migrations 을 통해 db 단 변경
 - python manage.py runserver : 백엔드 서버 열기
+- python manage.py startapp [app명] : app 단위 만들기
 ---
