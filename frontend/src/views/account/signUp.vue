@@ -37,8 +37,8 @@ import {registerUser} from '@/api/index';
                     nickname: this.nickname,
                 };
                 const { data } = await registerUser(userData);
-                console.log(data.email);
-                console.log(data.nickname);
+                console.log(data.data.email);
+                //console.log(data.nickname);
                 //this.logMessage = '${data.id} 님이 가입되었습니다.';
 
                 this.initForm();
