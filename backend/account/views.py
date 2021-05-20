@@ -7,12 +7,14 @@ from rest_framework import status
 
 
 # Create your views here.
-from .serializers import UserSerializer
+from .serializers import UserSerializer , UserListSerializer
 from .models import User
 
+#Account Main 확인용.
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
+#User 로그인.
 @api_view(['POST'])
 def login(request):
     if User.objects.filter(email=request.data['email']).exists():
@@ -28,6 +30,7 @@ def login(request):
     else:
         return Response("존재하지 않는 이메일입니다.", status=status.HTTP_204_NO_CONTENT)
 
+#User 회원가입.
 @api_view(['POST'])
 def signUp(request):
     serializer = UserSerializer(data=request.data)
@@ -38,5 +41,21 @@ def signUp(request):
             "data" : serializer.data
         })
     else:
-        return Response("이미 사용된 이메일입니다.", status = status.HTTP_400_BAD_REQUEST)
+        return JsonResponse({
+            "data" : serializer.data,
+            "message" : "유효하지 않은 형식입니다."
+        })
+        # return Response("이미 사용된 이메일입니다.", status = status.HTTP_400_BAD_REQUEST)
 
+#모든 User 정보 호출.
+@api_view(['GET'])
+def getUserAll(request):
+    users = User.objects.all()
+    serializer = UserListSerializer(users, many=True)
+    user_list = []
+    for user in serializer.data:
+        user_list.append(user)
+    return_data = {
+        "data" : user_list
+    }
+    return JsonResponse(return_data)
