@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 function registerUser(userData){
-    //console.log(userData);
     const url = 'http://localhost:8000/account/signUp/';
     return axios.post(url, userData);
 }
@@ -11,4 +10,9 @@ function getUserAll(){
     return axios.get(url);
 }
 
-export { registerUser , getUserAll};
+function deleteUser(userData){
+    const url = 'http://localhost:8000/account/deleteUser/';
+    return axios.post(url, userData);
+}
+
+export { registerUser , getUserAll, deleteUser};

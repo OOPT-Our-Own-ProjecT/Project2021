@@ -59,3 +59,12 @@ def getUserAll(request):
         "data" : user_list
     }
     return JsonResponse(return_data)
+
+#해당 User 정보 삭제.
+@api_view(['POST'])
+def deleteUser(request):
+    print("시작!!!!!!!!!!!!!!!!!!!!!!")
+    print(request.data)
+    user = get_object_or_404(User, email=request.data['email'])
+    user.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)

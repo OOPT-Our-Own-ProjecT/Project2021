@@ -19,12 +19,14 @@
                         <tr>
                             <th>이메일</th>
                             <th>닉네임</th>
+                            <th>기능</th>
                         </tr>
                     </thead>
                     <tbody id="userInfo">
                         <tr v-for="item in userList" v-bind:key=item.email>
                             <td>{{item.email}}</td>
                             <td>{{item.nickname}}</td>
+                            <td><button @click="deleteUser(item)">삭제</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -34,7 +36,7 @@
 </template>
 
 <script>
-import {getUserAll} from '@/api/index';
+import {getUserAll , deleteUser} from '@/api/index';
     export default {
         data: () => ({
             userData : {
@@ -51,14 +53,26 @@ import {getUserAll} from '@/api/index';
         methods: {
             async getUserAll() {
                 const{ data } = await getUserAll();
-                this.userList = data.data
+                this.userList = data.data;
             },
 
             login(){
-                console.log("로그인 메소드 실행")
-                console.log(this.userData.id)
-                console.log(this.userData.pw)
-            }
+                this.$router.push('loginSuccess');
+                console.log("로그인 메소드 실행");
+                console.log(this.userData.id);
+                console.log(this.userData.pw);
+            },
+
+            async deleteUser(user){
+                const userData = {
+                    email: user.email,
+                    pw: user.pw,
+                    nickname: user.nickname,
+                };
+                await deleteUser(userData);
+                this.getUserAll()
+            },
+
         },
     }
 </script>
