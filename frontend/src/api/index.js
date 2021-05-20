@@ -6,4 +6,9 @@ function registerUser(userData){
     return axios.post(url, userData);
 }
 
-export { registerUser };
+function getUserAll(){
+    const url = 'http://localhost:8000/account/getUserAll/';
+    return axios.get(url);
+}
+
+export { registerUser , getUserAll};
