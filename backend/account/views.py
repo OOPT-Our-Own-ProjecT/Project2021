@@ -16,11 +16,15 @@ def index(request):
 
 #User 로그인.
 @api_view(['POST'])
-def login(request):
+def getUser(request):
     if User.objects.filter(email=request.data['email']).exists():
         user = get_object_or_404(User, email=request.data['email'])
         if request.data['pw'] != user.pw:
-            return Response("비밀번호가 틀렸습니다.", status = status.HTTP_400_BAD_REQUEST)
+            return JsonResponse({
+                "data" : "",
+                "message" : "비밀번호가 틀렸습니다."
+            })
+            #return Response("비밀번호가 틀렸습니다.", status = status.HTTP_400_BAD_REQUEST)
         else:
             serializer = UserSerializer(user)
             #제이슨 타입으로 리턴
@@ -28,7 +32,11 @@ def login(request):
 			    "data" : serializer.data
 		    })
     else:
-        return Response("존재하지 않는 이메일입니다.", status=status.HTTP_204_NO_CONTENT)
+        return JsonResponse({
+            "data" : "",
+            "message" : "존재하지 않는 이메일입니다."
+        })
+        #return Response("존재하지 않는 이메일입니다.", status=status.HTTP_204_NO_CONTENT)
 
 #User 회원가입.
 @api_view(['POST'])

@@ -3,7 +3,7 @@
         <strong>메인페이지</strong>
         <br><br>
         <div>
-          <input placeholder="ID 입력" v-model="userData.id">
+          <input placeholder="ID 입력" v-model="userData.email">
           <input type="password" placeholder="비번 입력" v-model="userData.pw">
         </div>
         <br>
@@ -40,7 +40,7 @@ import {getUserAll , deleteUser, getUser} from '@/api/index';
     export default {
         data: () => ({
             userData : {
-                id : "",
+                email : "",
                 pw :  "",
             },
             userList: [],
@@ -56,13 +56,19 @@ import {getUserAll , deleteUser, getUser} from '@/api/index';
                 this.userList = data.data;
             },
 
-            
+
             async getUser(){
                 const userData = {
                     email: this.userData.email,
                     pw: this.userData.pw,
                 };
-                await getUser(userData);
+                const{ data } = await getUser(userData);
+                if(data.data == ""){
+                    alert(data.message)
+                }
+                else {
+                    this.$router.push('loginSuccess')
+                }
             },
 
             async deleteUser(user){

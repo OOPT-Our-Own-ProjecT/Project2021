@@ -13,10 +13,11 @@
             <div>
                 <label for="nickname">이름</label>
                 <input type="text" id="nickname" v-model="nickname"/>
-            </div>      
+            </div>
             <button type="submit">회원가입</button>
         </form>
-    </div>   
+        <button @click="$router.go(-1)">뒤로가기</button>
+    </div>
 </template>
 
 <script>
@@ -32,13 +33,13 @@ import {registerUser} from '@/api/index';
         methods: {
             async submitForm() {
                 const userData = {
-                    email: this.email,     
+                    email: this.email,
                     pw: this.pw,
                     nickname: this.nickname,
                 };
                 const { data } = await registerUser(userData);
                 console.log(data);
-                
+
                 if(data.data.email != "" && data.data.pw != "" && data.data.nickname != ""){
                     alert('회원가입 성공');
                     this.$router.push('/');
@@ -53,7 +54,7 @@ import {registerUser} from '@/api/index';
                 this.pw='';
                 this.nickname='';
             },*/
-            
+
         },
     }
 </script>
