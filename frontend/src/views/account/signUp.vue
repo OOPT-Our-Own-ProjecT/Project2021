@@ -38,8 +38,13 @@ import {registerUser} from '@/api/index';
                 };
                 const { data } = await registerUser(userData);
                 console.log(data.data.email);
-                //console.log(data.nickname);
-                //this.logMessage = '${data.id} 님이 가입되었습니다.';
+                
+                if(data.data.email != null && data.data.pw != null && data.data.nickname != null){
+                    alert('회원가입 성공');
+                    this.$router.push('/');
+                }else{
+                    alert('회원가입 실패');
+                }
 
                 this.initForm();
             },
