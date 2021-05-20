@@ -8,8 +8,8 @@
         </div>
         <br>
         <div>
-            <button @click="login">로그인</button>
-            <router-link to="/signUp">회원가입</router-link>
+            <button @click="getUser()">로그인</button>
+            <button @click="$router.push('/signUp')">회원가입</button>
         </div>
         <br>
         <div v-show="userList != null">
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import {getUserAll , deleteUser} from '@/api/index';
+import {getUserAll , deleteUser, getUser} from '@/api/index';
     export default {
         data: () => ({
             userData : {
@@ -56,11 +56,13 @@ import {getUserAll , deleteUser} from '@/api/index';
                 this.userList = data.data;
             },
 
-            login(){
-                this.$router.push('loginSuccess');
-                console.log("로그인 메소드 실행");
-                console.log(this.userData.id);
-                console.log(this.userData.pw);
+            
+            async getUser(){
+                const userData = {
+                    email: this.userData.email,
+                    pw: this.userData.pw,
+                };
+                await getUser(userData);
             },
 
             async deleteUser(user){

@@ -37,22 +37,22 @@ import {registerUser} from '@/api/index';
                     nickname: this.nickname,
                 };
                 const { data } = await registerUser(userData);
-                console.log(data.data.email);
+                console.log(data);
                 
-                if(data.data.email != null && data.data.pw != null && data.data.nickname != null){
+                if(data.data.email != "" && data.data.pw != "" && data.data.nickname != ""){
                     alert('회원가입 성공');
                     this.$router.push('/');
                 }else{
                     alert('회원가입 실패');
                 }
 
-                this.initForm();
+                //this.initForm();
             },
-            initForm(){
+            /*initForm(){
                 this.email='';
                 this.pw='';
                 this.nickname='';
-            },
+            },*/
             
         },
     }
