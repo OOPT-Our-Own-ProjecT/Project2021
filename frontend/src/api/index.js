@@ -19,5 +19,9 @@ function deleteUser(userData){
     const url = 'http://localhost:8000/account/deleteUser/';
     return axios.post(url, userData);
 }
+function updateUser(userData){
+    const url = 'http://localhost:8000/account/updateUser/';
+    return axios.put(url, userData);
+}
 
-export { registerUser , getUserAll, deleteUser, getUser};
+export { registerUser , getUserAll, deleteUser, getUser , updateUser};

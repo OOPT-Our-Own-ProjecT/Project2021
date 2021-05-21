@@ -71,8 +71,28 @@ def getUserAll(request):
 #해당 User 정보 삭제.
 @api_view(['POST'])
 def deleteUser(request):
-    print("시작!!!!!!!!!!!!!!!!!!!!!!")
     print(request.data)
     user = get_object_or_404(User, email=request.data['email'])
     user.delete()
-    return Response(status=status.HTTP_204_NO_CONTENT)
+    return JsonResponse({
+            "message" : "삭제 완료했습니다."
+        })
+
+
+#User 정보 수정.
+@api_view(['PUT'])
+def updateUser(request):
+    user = get_object_or_404(User, email=request.data['email'])
+    serializer = UserSerializer(user, data=request.data)
+    if serializer.is_valid():
+        serializer.save(user=user)
+        return JsonResponse({
+            "message" : "수정 완료했습니다." ,
+            "data" : serializer.data
+        })
+    else:
+        return JsonResponse({
+            "message" : "수정 실패했습니다.",
+            "data" : serializer.data
+        })
+
