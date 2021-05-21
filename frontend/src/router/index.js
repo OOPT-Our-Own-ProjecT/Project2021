@@ -3,6 +3,7 @@ import Router from 'vue-router'
 //import Router
 import Main from '@/views/test/main.vue'
 import SignUp from '@/views/account/signUp.vue'
+import LoginSuccess from '@/views/test/loginSuccess.vue'
 //import Component
 
 Vue.use(Router)
@@ -19,6 +20,11 @@ const routes = [
         component: SignUp
         //코드 스플리팅 적용
         //component: () => import('@/views/account/signUp.vue'),
+    },
+    {
+        path: '/loginSuccess',
+        name: 'loginSuccess',
+        component: LoginSuccess
     },
 ]
 //path 와 component 엮어주는 부분.

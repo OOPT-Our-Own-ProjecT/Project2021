@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -132,5 +133,5 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS 관련 추가
-CORS_ORIGIN_WHITELIST = [ 'http://localhost:8080' ]
+CORS_ORIGIN_WHITELIST = [ 'http://localhost:8080', 'http://localhost:8000' ]
 CORS_ALLOW_CREDENTIALS = True
