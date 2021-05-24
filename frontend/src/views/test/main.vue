@@ -3,6 +3,10 @@
         <strong>메인페이지</strong>
         <br><br>
         <div>
+            {{GET_MESSAGE}}
+        </div>
+        <br><br>
+        <div>
           <input placeholder="ID 입력" v-model="userData.email">
           <input type="password" placeholder="비번 입력" v-model="userData.pw">
         </div>
@@ -37,6 +41,11 @@
 
 <script>
 import {getUserAll , deleteUser, getUser} from '@/api/index';
+
+import { mapGetters } from 'vuex'
+
+const accountStore = 'accountStore'
+
     export default {
         data: () => ({
             userData : {
@@ -45,6 +54,12 @@ import {getUserAll , deleteUser, getUser} from '@/api/index';
             },
             userList: [],
         }),
+
+        computed:{
+            ...mapGetters(accountStore, [
+                'GET_MESSAGE'
+            ]),
+        },
 
         created() {
             this.getUserAll()
