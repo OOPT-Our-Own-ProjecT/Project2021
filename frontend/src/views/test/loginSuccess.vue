@@ -17,9 +17,13 @@
 import NavigationBar from '@/components/navigationBar.vue'
 import {updateUser} from '@/api/index';
 
+
 export default {
     components:{
         NavigationBar
+    },
+
+    computed:{
     },
 
 	data () {
