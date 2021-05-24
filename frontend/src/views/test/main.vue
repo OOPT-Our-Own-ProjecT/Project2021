@@ -67,6 +67,8 @@ import {getUserAll , deleteUser, getUser} from '@/api/index';
                     alert(data.message)
                 }
                 else {
+                    this.$session.set("user_email" , data.data.email)
+                    this.$session.set("user_nickname" , data.data.nickname)
                     this.$router.push('loginSuccess')
                 }
             },
@@ -77,7 +79,8 @@ import {getUserAll , deleteUser, getUser} from '@/api/index';
                     pw: user.pw,
                     nickname: user.nickname,
                 };
-                await deleteUser(userData);
+                const { data } = await deleteUser(userData);
+                alert(data.message)
                 this.getUserAll()
             },
 

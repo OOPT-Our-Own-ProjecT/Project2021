@@ -1,0 +1,4 @@
+1. account --> nickname 수정
+2. vue-session
+3. logout 
+4. nav_bar 만들어보기
