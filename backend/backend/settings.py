@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import datetime
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,6 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-paw322cew+_qhuj**&(t+*sm_yusc8zrn4505%q60+c(pa#qv('
+
+#jwt토큰에서 사용될 시크릿키.
+JWT_SECRET_KEY = 'm_&@=qxne#1+=2brho6rt)8a*3s#98$z^hi3uw)yaik(qyuk6!'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -135,3 +141,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # CORS 관련 추가
 CORS_ORIGIN_WHITELIST = [ 'http://localhost:8080', 'http://localhost:8000' ]
 CORS_ALLOW_CREDENTIALS = True
+
+#JWT 토큰 관련 추가
+REST_FRAMEWORK = {
+    # 'DEFAULT_PERMISSION_CLASSES': (
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
+
+JWT_AUTH = {
+    'JWT_SECRET_KEY': JWT_SECRET_KEY,
+    'JWT_ALGORITHM': 'HS256',
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=28),
+}

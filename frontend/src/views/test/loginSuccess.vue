@@ -3,7 +3,7 @@
         <div>
             <NavigationBar></NavigationBar>
         </div>
-        <h2>환영합니다. {{$session.get('user_nickname')}} 님!</h2>
+        <h2>환영합니다. {{userInfo.nickname}} 님!</h2>
         <div>
             <textarea v-model="userInfo.nickname"></textarea>
             <button @click="update()">닉네임 변경</button>
@@ -16,27 +16,44 @@
 
 import NavigationBar from '@/components/navigationBar.vue'
 import {updateUser} from '@/api/index';
+import {mapState, mapMutations} from 'vuex'
 
+const accountStore = 'accountStore'
 
 export default {
     components:{
         NavigationBar
     },
 
-    computed:{
+    computed: {
+        ...mapState(accountStore,["authToken" , "userData"]),
     },
+
 
 	data () {
 		return {
-            userInfo:{
-                nickname: this.$session.get('user_nickname') ,
-            }
+            userInfo: {
+                email: '',
+                pw: '',
+                nickname: ''
+            },
+            token: '',
         }
     },
+    created(){
+        this.userInfo.email = this.userData.email
+        this.userInfo.pw = this.userData.pw
+        this.userInfo.nickname = this.userData.nickname
+        this.token = this.authToken
+    },
     methods: {
+        ...mapMutations(accountStore, [
+                'REMOVE_TOKEN'
+        ]),
+
         async update(){
                 const userData = {
-                    email: this.$session.get('user_email'),
+                    email: this.userInfo.email,
                     nickname: this.userInfo.nickname,
                 };
                 const{ data } = await updateUser(userData);
@@ -45,7 +62,7 @@ export default {
         },
         logout(){
             alert("로그아웃 합니다.")
-            this.$session.destroy()
+            this.REMOVE_TOKEN()
             this.$router.push('/')
         },
     },

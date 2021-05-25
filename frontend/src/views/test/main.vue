@@ -42,7 +42,7 @@
 <script>
 import {getUserAll , deleteUser, getUser} from '@/api/index';
 
-import { mapGetters } from 'vuex'
+import { mapGetters , mapMutations} from 'vuex'
 
 const accountStore = 'accountStore'
 
@@ -66,6 +66,11 @@ const accountStore = 'accountStore'
         },
 
         methods: {
+            ...mapMutations(accountStore,[
+                'SET_TOKEN',
+                'SET_USERDATA',
+            ]),
+
             async getUserAll() {
                 const{ data } = await getUserAll();
                 this.userList = data.data;
@@ -82,8 +87,9 @@ const accountStore = 'accountStore'
                     alert(data.message)
                 }
                 else {
-                    this.$session.set("user_email" , data.data.email)
-                    this.$session.set("user_nickname" , data.data.nickname)
+                    console.log(data.token)
+                    this.SET_TOKEN(data.token)
+                    this.SET_USERDATA(data.data)
                     this.$router.push('loginSuccess')
                 }
             },
