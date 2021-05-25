@@ -22,10 +22,7 @@ class Stack {
     this._arr = [];
   }
   push(item) {
-    this._arr.push({
-            idx : this._arr.length,
-            data: item,
-        });
+    this._arr.push(item)
   }
   pop() {
     return this._arr.pop();
