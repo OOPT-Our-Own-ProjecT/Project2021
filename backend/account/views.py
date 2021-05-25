@@ -10,6 +10,12 @@ from rest_framework import status
 from .serializers import UserSerializer , UserListSerializer
 from .models import User
 
+#jwt관련 라이브러리
+import jwt
+#jwt토큰에서 사용될 시크릿키.
+JWT_SECRET_KEY = 'm_&@=qxne#1+=2brho6rt)8a*3s#98$z^hi3uw)yaik(qyuk6!'
+
+
 #Account Main 확인용.
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
@@ -27,8 +33,14 @@ def getUser(request):
             #return Response("비밀번호가 틀렸습니다.", status = status.HTTP_400_BAD_REQUEST)
         else:
             serializer = UserSerializer(user)
+            user_id = serializer.data['email']
+            #토큰발행
+            token = jwt.encode({'id' : user_id}, JWT_SECRET_KEY, algorithm = "HS256")
+            token = token.decode('utf-8')
+
             #제이슨 타입으로 리턴
             return JsonResponse({
+                "token" : token,
 			    "data" : serializer.data
 		    })
     else:

@@ -15,9 +15,9 @@ export default {
 	data () {
 		return {
             items: [
-                { title: 'Menu 1', path: '/loginSuccess'},
-                { title: 'Menu 2', path: '/loginSuccess'},
-                { title: 'Menu 3', path: '/loginSuccess'},
+                { title: 'Stack', path: '/stack'},
+                { title: 'Queue', path: '/queue'},
+                { title: 'Tree', path: '/tree'},
                 { title: 'Menu 4', path: '/loginSuccess'},
                 { title: 'Menu 5', path: '/loginSuccess'},
             ],
