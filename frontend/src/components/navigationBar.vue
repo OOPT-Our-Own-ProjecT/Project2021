@@ -16,7 +16,7 @@ export default {
 		return {
             items: [
                 { title: 'Stack', path: '/stack'},
-                { title: 'Menu 2', path: '/loginSuccess'},
+                { title: 'Queue', path: '/queue'},
                 { title: 'Menu 3', path: '/loginSuccess'},
                 { title: 'Menu 4', path: '/loginSuccess'},
                 { title: 'Menu 5', path: '/loginSuccess'},
