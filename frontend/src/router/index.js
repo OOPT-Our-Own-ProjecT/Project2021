@@ -6,6 +6,7 @@ import SignUp from '@/views/account/signUp.vue'
 import LoginSuccess from '@/views/test/loginSuccess.vue'
 import Stack from '@/views/ds/stack.vue'
 import Queue from '@/views/ds/queue.vue'
+import Tree from '@/views/ds/tree.vue'
 //import Component
 
 Vue.use(Router)
@@ -37,6 +38,11 @@ const routes = [
         path: '/queue',
         name: 'queue',
         component: Queue
+    },
+    {
+        path: '/tree',
+        name: 'tree',
+        component: Tree
     },
 
 ]
