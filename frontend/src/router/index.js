@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Main from '@/views/test/main.vue'
 import SignUp from '@/views/account/signUp.vue'
 import LoginSuccess from '@/views/test/loginSuccess.vue'
+import Stack from '@/views/ds/stack.vue'
 //import Component
 
 Vue.use(Router)
@@ -25,6 +26,11 @@ const routes = [
         path: '/loginSuccess',
         name: 'loginSuccess',
         component: LoginSuccess
+    },
+    {
+        path: '/stack',
+        name: 'stack',
+        component: Stack
     },
 ]
 //path 와 component 엮어주는 부분.
