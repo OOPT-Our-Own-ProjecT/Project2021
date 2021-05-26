@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <NavigationBar></NavigationBar>
+            <MainNB></MainNB>
         </div>
         <h2>환영합니다. {{userInfo.nickname}} 님!</h2>
         <div>
@@ -14,7 +14,7 @@
 
 <script>
 
-import NavigationBar from '@/components/navigationBar.vue'
+import MainNB from '@/components/mainNB.vue'
 import {updateUser} from '@/api/index';
 import {mapState, mapMutations} from 'vuex'
 
@@ -22,7 +22,7 @@ const accountStore = 'accountStore'
 
 export default {
     components:{
-        NavigationBar
+        MainNB
     },
 
     computed: {
