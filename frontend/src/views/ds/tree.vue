@@ -7,6 +7,7 @@
         </div>
         <h2>Tree 실험실</h2>
         <button @click="traverse(tree)">On</button>
+        
     </div>
 </template>
 
@@ -50,6 +51,8 @@ export default {
         traverse(node){
         console.log(node.content);
         for(let child of node.children){
+                //console.log(child);
+                //console.log(this.traverse(child));
                 this.traverse(child);
             }
         }
