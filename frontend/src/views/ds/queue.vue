@@ -1,7 +1,9 @@
 <template>
     <div>
         <div>
-            <NavigationBar></NavigationBar>
+            <MainNB></MainNB>
+            <br>
+            <DSNB></DSNB>
         </div>
         <h2>Queue 실험실</h2>
         <div>
@@ -56,11 +58,13 @@ class Queue {
   }
 }
 
-import NavigationBar from '@/components/navigationBar.vue'
+import MainNB from '@/components/mainNB.vue'
+import DSNB from '@/components/dsNB.vue'
 
 export default {
     components:{
-        NavigationBar
+        MainNB,
+        DSNB,
     },
 
     computed: {

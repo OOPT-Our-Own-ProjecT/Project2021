@@ -18,8 +18,8 @@ export default {
                 { title: 'Stack', path: '/stack'},
                 { title: 'Queue', path: '/queue'},
                 { title: 'Tree', path: '/tree'},
-                { title: 'Menu 4', path: '/loginSuccess'},
-                { title: 'Menu 5', path: '/loginSuccess'},
+                { title: 'Menu 4', path: '/stack'},
+                { title: 'Menu 5', path: '/stack'},
             ],
         }
     },
