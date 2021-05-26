@@ -1,10 +1,13 @@
 <template>
     <div>
         <div>
-            <NavigationBar></NavigationBar>
+            <MainNB></MainNB>
+            <br>
+            <DSNB></DSNB>
         </div>
         <h2>Tree 실험실</h2>
         <button @click="traverse(tree)">On</button>
+        
     </div>
 </template>
 
@@ -16,11 +19,13 @@ class Node {
     }
 }
 
-import NavigationBar from '@/components/navigationBar.vue'
+import MainNB from '@/components/mainNB.vue'
+import DSNB from '@/components/dsNB.vue'
 
 export default {
     components:{
-        NavigationBar
+        MainNB,
+        DSNB,
     },
 
     computed: {
@@ -46,6 +51,8 @@ export default {
         traverse(node){
         console.log(node.content);
         for(let child of node.children){
+                //console.log(child);
+                //console.log(this.traverse(child));
                 this.traverse(child);
             }
         }

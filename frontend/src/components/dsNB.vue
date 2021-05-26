@@ -3,7 +3,7 @@
        <table id="nav">
             <tbody id="navInfo">
                 <td v-for="item in items" v-bind:key=item.titla>
-                    <button @click="move(item.path)">{{item.title}}</button>
+                    <button @click="move(item.path)" style="background-color: aqua;">{{item.title}}</button>
                 </td>
             </tbody>
         </table>
@@ -18,8 +18,8 @@ export default {
                 { title: 'Stack', path: '/stack'},
                 { title: 'Queue', path: '/queue'},
                 { title: 'Tree', path: '/tree'},
-                { title: 'Menu 4', path: '/loginSuccess'},
-                { title: 'Menu 5', path: '/loginSuccess'},
+                { title: 'Heap', path: '/heap'},
+                { title: 'Menu 5', path: '/stack'},
             ],
         }
     },
