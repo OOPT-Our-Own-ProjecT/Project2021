@@ -15,7 +15,7 @@
         <div class="stack">
             <div v-for="item in stack._arr" v-bind:key=item.idx>
                 <div class="stack_data">
-                    {{item}}
+                    <h1>{{item}}</h1>
                 </div>
             </div>
         </div>
@@ -25,17 +25,20 @@
 <script>
 
 class Stack {
-  constructor() {
-    this._arr = [];
-  }
-  push(item) {
-      if(this._arr.length != 5) this._arr.push(item)
-      else alert("OverFlow!!")
-  }
-  pop() {
-      if(this._arr.length != 0) this._arr.pop()
-      else alert("UnderFlow!!")
-  }
+    constructor() {
+        this._arr = [];
+    }
+    push(item) {
+        if(this._arr.length != 5) {
+            if(item == "") alert("빈 값은 넣을 수 없습니다.")
+            else this._arr.push(item)
+        }
+        else alert("OverFlow!!")
+    }
+    pop() {
+        if(this._arr.length != 0) this._arr.pop()
+        else alert("UnderFlow!!")
+    }
 }//Class Stack.
 
 import MainNB from '@/components/mainNB.vue'
