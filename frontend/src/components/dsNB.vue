@@ -18,7 +18,7 @@ export default {
                 { title: 'Stack', path: '/stack'},
                 { title: 'Queue', path: '/queue'},
                 { title: 'Tree', path: '/tree'},
-                { title: 'Menu 4', path: '/stack'},
+                { title: 'Heap', path: '/heap'},
                 { title: 'Menu 5', path: '/stack'},
             ],
         }
