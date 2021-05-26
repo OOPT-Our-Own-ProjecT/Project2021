@@ -5,6 +5,10 @@
         </div>
         <h2>Queue 실험실</h2>
         <div>
+            <textarea v-model="size"></textarea>
+            <button @click="inputSize(size)">Queue Size</button>
+        </div>
+        <div>
             <textarea v-model="item"></textarea>
             <button @click="enqueue(item)">Enqueue</button>
             <button @click="dequeue()">Dequeue</button>
@@ -20,12 +24,35 @@
 class Queue {
   constructor() {
     this._arr = [];
+    this.front = 0;
+    this.rear = 0;
+  }
+  inputSize(size){
+      this.size = size;
+  }
+  isEmpty(){
+      return this.front == this.rear;
+  }
+  isFull(){
+      return (this.rear + 1) % this.size == this.front;
   }
   enqueue(item) {
-    this._arr.push(item);
+      if(this.isFull()){
+          console.log(new Error("큐가 포화상태입니다."))
+      }
+      else{
+          this.rear = (this.rear + 1) % this.size;
+          this._arr.push(item);
+      }
   }
   dequeue() {
-    return this._arr.shift();
+      if(this.isEmpty()){
+          console.log(new Error("큐가 비었습니다."));
+      }
+      else{
+          this.front = (this.front + 1) % this.size;
+          return this._arr.shift();
+      }
   }
 }
 
@@ -43,6 +70,7 @@ export default {
 
 	data () {
 		return {
+            size: "",
             item: "",
             queue : new Queue(),
         }
@@ -51,6 +79,10 @@ export default {
 
     },
     methods: {
+        inputSize(size){
+            this.size = size
+            console.log(size);
+        },
         enqueue(data){
             this.queue.enqueue(data)
             this.item = ""
