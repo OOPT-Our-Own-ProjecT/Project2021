@@ -89,7 +89,7 @@ class insertionSort{
             }
 
             this._arr[left + 1] = cur;
-            
+
         }
     }
 
