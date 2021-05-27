@@ -8,15 +8,18 @@
         <h2>selectionsort</h2>
         <button @click="selSort()">Sort</button>
         <p>정렬전</p>
-        <div>
-            <p>{{beforeSort}}</p>
+        <div class="list">
+        <div class="listdata" v-for="(item,idx) in beforeSort"  v-bind:key=idx>
+                <div><h2>{{item}}</h2></div>
         </div>
-        
+        </div>
         <p>정렬후</p>
-        <div v-for="(item, index) in arr2" v-bind:key=item.idx>
-            <h1>{{ index }} - {{ item }}</h1>            
+        <div class="list" v-for="(item,idx) in arr3"  v-bind:key=idx>
+            {{idx+1}} 회전 결과<br>
+            <div class="listdata" v-for="(item2,idx) in item"  v-bind:key=idx>
+                <div><h2>{{item2}}</h2></div>
+            </div>
         </div>
-        <p>{{arr2}}</p>
     </div>
 </template>
 
@@ -38,9 +41,8 @@ export default {
 
 	data () {
 		return {
-            beforeSort: [1, 10, 5, 8, 7, 6, 4, 3, 2, 9],
-            arr: [1, 10, 5, 8, 7, 6, 4, 3, 2, 9],
-            arr2: [],
+            beforeSort: [1, 10, 5, 8, 7, 6, 4],
+            arr: [1, 10, 5, 8, 7, 6, 4],
             arr3: []
         }
     },
@@ -49,26 +51,31 @@ export default {
     },
     methods: {
         selSort(){
-            this.arr;
-            this.arr2;
+            
             var i, j, min, temp, index
-            for(i=0; i<10; i++){
+            for(i=0; i<this.arr.length; i++){
                 min = 9999;
-                for(j=i; j<10; j++){
+                for(j=i; j<this.arr.length; j++){
                     if(min > this.arr[j]){
                         min = this.arr[j];
                         index = j;
                     }
                 }
+                
                 temp = this.arr[i];
                 this.arr[i] = this.arr[index];
                 this.arr[index] = temp;
-                this.arr2 = this.arr
-                //this.arr3.push(this.arr2)
-                //this.$set(this.arr2)
-                this.arr2.push()
-                console.log(this.arr2)
+                var arr2 = [];
+                for(var k=0; k<this.arr.length; k++){
+                    arr2[k] = this.arr[k]
+                    //console.log(this.arr2)
+                }
+                console.log(arr2)
+                
+                //console.log(this.arr2)
+                this.arr3.push(arr2)
             }
+            
                   
         }
     },
@@ -76,20 +83,15 @@ export default {
 </script>
 
 <style>
-    .stack{
-        margin: auto;
-        height: 500px;
-        width: 50%;
-        border: 1px solid;
-        text-align: center;
-        transform: rotate(180deg);
-    }
-    .stack_data{
-        background-color: aqua;
+    .list{
         margin: auto;
         height: 100px;
-        width: 100%;
+        width: 75%;
         border: 1px solid;
-        transform: rotate(180deg);
+        padding: 15px;
+    }
+    .listdata{
+        width: 14%;
+        float: left;
     }
 </style>
