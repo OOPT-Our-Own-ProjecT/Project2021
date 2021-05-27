@@ -9,8 +9,8 @@ import Stack from '@/views/ds/stack.vue'
 import Queue from '@/views/ds/queue.vue'
 import Tree from '@/views/ds/tree.vue'
 import Heap from '@/views/ds/heap.vue'
-//data structure
 import PriorityQueue from '@/views/ds/priorityQueue.vue'
+//data structure
 import InsertionSort from '@/views/sort/insertionSort.vue'
 import SelectionSort from '@/views/sort/selectionSort.vue'
 import BubbleSort from '@/views/sort/bubbleSort.vue'
