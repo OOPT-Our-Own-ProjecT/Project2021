@@ -60,7 +60,7 @@ export default {
         push(data){
             if(isNaN(data) || data == "") alert("숫자만 가능합니다.")
             else if(this.origin_list.length >=7) alert("OverFlow!!")
-            else this.origin_list.push(data)
+            else this.origin_list.push(parseFloat(data))
             this.data = ""
         },
         bubblesort(){
@@ -75,8 +75,8 @@ export default {
                     prev.push(now[b])
                 }
                 for(var j=0; j<now.length-1; j++){
-                    var left = now[j]
-                    var right = now[j+1]
+                    const left = now[j]
+                    const right = now[j+1]
                     if(left > right){
                         now[j] = right;
                         now[j+1] = left;
