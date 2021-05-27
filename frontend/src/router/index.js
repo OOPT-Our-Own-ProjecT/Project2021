@@ -8,6 +8,12 @@ import Stack from '@/views/ds/stack.vue'
 import Queue from '@/views/ds/queue.vue'
 import Tree from '@/views/ds/tree.vue'
 import Heap from '@/views/ds/heap.vue'
+import PriorityQueue from '@/views/ds/priorityQueue.vue'
+import InsertionSort from '@/views/sort/insertionSort.vue'
+import SelectionSort from '@/views/sort/selectionSort.vue'
+import BubbleSort from '@/views/sort/bubbleSort.vue'
+import MergeSort from '@/views/sort/mergeSort.vue'
+import QuickSort from '@/views/sort/quickSort.vue'
 //import Component
 
 Vue.use(Router)
@@ -49,6 +55,36 @@ const routes = [
         path: '/heap',
         name: 'heap',
         component: Heap
+    },
+    {
+        path: '/priorityQueue',
+        name: 'priorityQueue',
+        component: PriorityQueue
+    },
+    {
+        path: '/insertionSort',
+        name: 'insertionSort',
+        component: InsertionSort
+    },
+    {
+        path: '/selectionSort',
+        name: 'selectionSort',
+        component: SelectionSort
+    },
+    {
+        path: '/bubbleSort',
+        name: 'bubbleSort',
+        component: BubbleSort
+    },
+    {
+        path: '/mergeSort',
+        name: 'mergeSort',
+        component: MergeSort
+    },
+    {
+        path: '/quickSort',
+        name: 'quickSort',
+        component: QuickSort
     },
 
 ]

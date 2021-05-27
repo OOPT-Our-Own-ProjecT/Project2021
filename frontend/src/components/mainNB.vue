@@ -17,7 +17,7 @@ export default {
             items: [
                 { title: 'Home', path: '/loginsuccess'},
                 { title: 'DataStructure', path: '/stack'},
-                { title: 'Menu 3', path: '/loginsuccess'},
+                { title: 'Sort', path: '/insertionsort'},
                 { title: 'Menu 4', path: '/loginsuccess'},
                 { title: 'Menu 5', path: '/loginsuccess'},
             ],

@@ -5,7 +5,7 @@
             <br>
             <SortNB></SortNB>
         </div>
-        <h2>insertionsort</h2>
+        <h2>selectionsort</h2>
     </div>
 </template>
 
