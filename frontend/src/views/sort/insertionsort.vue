@@ -7,93 +7,30 @@
         </div>
         <h2>insertionsort</h2>
         <div>
-            <button @click="inSort()">Sorting</button>
+            <textarea v-model="data"></textarea>
+            <button @click="push(data)">push</button>
+            <button @click="insertionSort()">sort</button>
+            <button @click="erase()">erase</button>
         </div>
-        <br><br>
-         <transition-group tag="ul" class="list">
-            <li v-for="(item, index) in iSort._arr"
-            v-bind:key="item"
-            class="item"
-            v-on:click="doRemove(index)">{{ item }}</li>
-        </transition-group>
+        <div>
+            <div class="list">
+                <div class="listdata" v-for="(item,idx) in origin_list"  v-bind:key=idx>
+                    <div><h2>{{item}}</h2></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="list" v-for="(item,idx) in insert_list"  v-bind:key=idx>
+                {{idx+1}} 회전 결과<br>
+                <div class="listdata" v-for="(item2,idx) in item"  v-bind:key=idx>
+                    <div><h2>{{item2}}</h2></div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-
-class insertionSort{
-    constructor(size){
-        this._arr = [5, 54, 32, 48, 24, 3, 8];
-        this.maxArrSize = size;
-    }
-
-    /*
-    isEmpty(){
-      return this._arr.length == 0;
-    }
-
-    isFull(){
-        return this.maxArrSize == this._arr.length;
-    }
-
-    input(item){
-        if(this.isFull()){
-            alert("입력 가능 개수가 최대입니다.")
-        }
-        else{
-            this._arr.push(item);
-        }
-    }
-    */
-    inSort(){
-
-        /*
-        if(this.isEmpty()){
-            alert("입력이 하나도 없습니다.")
-        }
-        else{
-
-            for(let i = 1; i < this._arr.length; i++){
-
-                let cur = this._arr[i];
-                let left = i - 1;
-
-                while(left >= 0 && this._arr[left] > cur){
-                    this._arr[left + 1] = this._arr[left];
-                    left--;
-                }
-
-                this._arr[left + 1] = cur;
-
-                let mes = "" + i + "회전 : "
-
-                for(let j = 0; j < this._arr.length; j++){
-
-                    mes += this._arr[j] + " "
-
-                }
-
-                console.log(mes);
-            }
-
-        }
-        */
-       for(let i = 1; i < this._arr.length; i++){
-
-            let cur = this._arr[i];
-            let left = i - 1;
-
-            while(left >= 0 && this._arr[left] > cur){
-                this._arr[left + 1] = this._arr[left];
-                left--;
-            }
-
-            this._arr[left + 1] = cur;
-
-        }
-    }
-
-}
 
 import MainNB from '@/components/mainNB.vue'
 import SortNB from '@/components/sortNB.vue'
@@ -108,57 +45,76 @@ export default {
 
     },
 
-
-	data () {
-		return {
-            item: "",
-            iSort : new insertionSort(7),
+   data () {
+      return {
+            data: "" ,
+            origin_list:[],
+            insert_list:[],
         }
     },
     created(){
 
     },
     methods: {
-        /*
-        input(data){
-            this.iSort.input(data)
-            this.item = ""
+        push(data){
+            if(isNaN(data) || data == "") alert("숫자만 가능합니다.")
+            else if(this.origin_list.length >=7) alert("OverFlow!!")
+            else this.origin_list.push(parseFloat(data))
+            this.data = ""
         },
-        */
-        inSort(){
-            this.iSort.inSort()
+        insertionSort(){
+            this.insert_list = []
+            const now = []
+
+            for(var a=0; a<this.origin_list.length; a++){
+                now.push(this.origin_list[a])
+            }
+            for(var i = 1; i < now.length; i++){
+
+                const prev = []
+
+                for(var b=0; b<now.length; b++){
+                    prev.push(now[b])
+                }
+
+                var cur = now[i];
+                console.log(typeof(now[i]))
+                var left = i - 1;
+
+                while(left >= 0 && now[left] > cur){
+                    now[left + 1] = now[left];
+                    left--;
+                }
+
+                now[left + 1] = cur;
+
+                const tmp = []
+                for(var k=0; k<now.length; k++){
+                    tmp.push(now[k])
+                }
+                this.insert_list.push(tmp)
+            }
         },
-        doRemove: function (index) {
-            this.list.splice(index, 1)
+        erase(){
+            this.data = ""
+            this.origin_list = []
+            this.now_list = []
+            this.insert_list= []
         },
     },
 }
 </script>
 
 <style>
-.list {
-  width: 240px;
-  padding: 0;
-}
-.item {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin: 4px;
-  width: 40px;
-  height: 40px;
-  background: #f5f5f5;
-}
-/* 트랜지션 전용 스타일 */
-.v-enter-active, .v-leave-active, .v-move {
-  transition: all 1s;
-}
-.v-leave-active {
-  position: absolute;
-}
-.v-enter, .v-leave-to {
-  opacity: 0;
-  background: #f9a3b1;
-  transform: translateY(-30px);
-}
+    .list{
+        margin: auto;
+        height: 100px;
+        width: 75%;
+        border: 1px solid;
+        padding: 15px;
+    }
+    .listdata{
+        width: 14%;
+        float: left;
+    }
 </style>
