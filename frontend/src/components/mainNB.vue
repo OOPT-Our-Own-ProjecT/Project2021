@@ -15,11 +15,11 @@ export default {
 	data () {
 		return {
             items: [
-                { title: 'Home', path: '/loginsuccess'},
+                { title: 'Home', path: '/loginSuccess'},
                 { title: 'DataStructure', path: '/stack'},
-                { title: 'Menu 3', path: '/loginsuccess'},
-                { title: 'Menu 4', path: '/loginsuccess'},
-                { title: 'Menu 5', path: '/loginsuccess'},
+                { title: 'Sort', path: '/insertionSort'},
+                { title: 'Menu 4', path: '/loginSuccess'},
+                { title: 'Menu 5', path: '/loginSuccess'},
             ],
         }
     },

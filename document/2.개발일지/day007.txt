@@ -1,0 +1,2 @@
+1. Data Structure --> Priority Queue 구현.
+2. Sort --> 5가지(INSERTION, SELECTION, BUBBLE, MERGE, QUICK) 되는대로 구현하기.

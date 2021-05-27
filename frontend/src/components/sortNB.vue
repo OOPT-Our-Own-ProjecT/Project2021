@@ -15,11 +15,11 @@ export default {
 	data () {
 		return {
             items: [
-                { title: 'Stack', path: '/stack'},
-                { title: 'Queue', path: '/queue'},
-                { title: 'Tree', path: '/tree'},
-                { title: 'Heap', path: '/heap'},
-                { title: 'Menu 5', path: '/stack'},
+                { title: 'Insertion', path: '/insertionSort'},
+                { title: 'Selection', path: '/selectionSort'},
+                { title: 'Bubble', path: '/bubbleSort'},
+                { title: 'Merge', path: '/mergeSort'},
+                { title: 'Quick', path: '/quickSort'},
             ],
         }
     },

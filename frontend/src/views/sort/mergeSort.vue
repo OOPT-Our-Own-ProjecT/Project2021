@@ -5,11 +5,11 @@
             <br>
             <SortNB></SortNB>
         </div>
-        <h2>insertionsort</h2>
+        <h2>mergesort</h2>
         <div>
             <textarea v-model="data"></textarea>
             <button @click="push(data)">push</button>
-            <button @click="insertionSort()">sort</button>
+            <button @click="mergebutton()">merge</button>
             <button @click="erase()">erase</button>
         </div>
         <div>
@@ -18,12 +18,10 @@
                     <div><h2>{{item}}</h2></div>
                 </div>
             </div>
-        </div>
-        <div>
-            <div class="list" v-for="(item,idx) in insert_list"  v-bind:key=idx>
-                {{idx+1}} 회전 결과<br>
-                <div class="listdata" v-for="(item2,idx) in item"  v-bind:key=idx>
-                    <div><h2>{{item2}}</h2></div>
+            <br>
+            <div class="list2">
+                <div class="listdata" v-for="(item,idx) in merge_list"  v-bind:key=idx>
+                    <div><h2>{{item}}</h2></div>
                 </div>
             </div>
         </div>
@@ -45,11 +43,12 @@ export default {
 
     },
 
-   data () {
-      return {
+
+	data () {
+		return {
             data: "" ,
             origin_list:[],
-            insert_list:[],
+            merge_list:[],
         }
     },
     created(){
@@ -62,46 +61,34 @@ export default {
             else this.origin_list.push(parseFloat(data))
             this.data = ""
         },
-        insertionSort(){
-            this.insert_list = []
-            const now = []
-
-            for(var a=0; a<this.origin_list.length; a++){
-                now.push(this.origin_list[a])
+        mergebutton(){
+            this.merge_list = []
+            this.merge_list = this.mergeSort(this.origin_list)
+        },
+        mergeSort(array){
+            if (array.length == 1){
+                return array
             }
-            for(var i = 1; i < now.length; i++){
-
-                const prev = []
-
-                for(var b=0; b<now.length; b++){
-                    prev.push(now[b])
-                }
-
-                var cur = now[i];
-                console.log(typeof(now[i]))
-                var left = i - 1;
-
-                while(left >= 0 && now[left] > cur){
-                    now[left + 1] = now[left];
-                    left--;
-                }
-
-                now[left + 1] = cur;
-
-                const tmp = []
-                for(var k=0; k<now.length; k++){
-                    tmp.push(now[k])
-                }
-                this.insert_list.push(tmp)
+            const middleIndex = Math.floor(array.length / 2);
+            const left = array.slice(0, middleIndex);
+            const right = array.slice(middleIndex);
+            const tmp_data =  this.merge(this.mergeSort(left), this.mergeSort(right));
+            this.merge_list.push(tmp_data)
+            return tmp_data
+        },
+        merge(left, right){
+            const result = [];
+            while(left.length!=0 && right.length!=0){
+                left[0] <= right[0] ? result.push(left.shift()) : result.push(right.shift());
             }
+            return [...result, ...left, ...right];
         },
         erase(){
             this.data = ""
             this.origin_list = []
-            this.now_list = []
-            this.insert_list= []
+            this.merge_list = []
         },
-    },
+    }
 }
 </script>
 
@@ -113,8 +100,21 @@ export default {
         border: 1px solid;
         padding: 15px;
     }
+    .list2{
+        margin: auto;
+        height: 100px;
+        width: 90%;
+        border: 1px solid;
+        padding: 15px;
+    }
     .listdata{
         width: 14%;
         float: left;
+    }
+    .group{
+        border: 1px solid;
+        width: 10%;
+        float: left;
+        margin: 10px;
     }
 </style>

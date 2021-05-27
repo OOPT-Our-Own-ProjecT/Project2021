@@ -5,11 +5,11 @@
             <br>
             <SortNB></SortNB>
         </div>
-        <h2>insertionsort</h2>
+        <h2>bubblesort</h2>
         <div>
             <textarea v-model="data"></textarea>
             <button @click="push(data)">push</button>
-            <button @click="insertionSort()">sort</button>
+            <button @click="bubblesort()">bubble</button>
             <button @click="erase()">erase</button>
         </div>
         <div>
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div>
-            <div class="list" v-for="(item,idx) in insert_list"  v-bind:key=idx>
+            <div class="list" v-for="(item,idx) in bubble_list"  v-bind:key=idx>
                 {{idx+1}} 회전 결과<br>
                 <div class="listdata" v-for="(item2,idx) in item"  v-bind:key=idx>
                     <div><h2>{{item2}}</h2></div>
@@ -45,11 +45,12 @@ export default {
 
     },
 
-   data () {
-      return {
+
+	data () {
+		return {
             data: "" ,
             origin_list:[],
-            insert_list:[],
+            bubble_list: [],
         }
     },
     created(){
@@ -62,45 +63,48 @@ export default {
             else this.origin_list.push(parseFloat(data))
             this.data = ""
         },
-        insertionSort(){
-            this.insert_list = []
+        bubblesort(){
+            this.bubble_list = []
             const now = []
-
             for(var a=0; a<this.origin_list.length; a++){
                 now.push(this.origin_list[a])
             }
-            for(var i = 1; i < now.length; i++){
-
+            for(var i=0; i<now.length-1; i++){
                 const prev = []
-
                 for(var b=0; b<now.length; b++){
                     prev.push(now[b])
                 }
-
-                var cur = now[i];
-                console.log(typeof(now[i]))
-                var left = i - 1;
-
-                while(left >= 0 && now[left] > cur){
-                    now[left + 1] = now[left];
-                    left--;
+                for(var j=0; j<now.length-1; j++){
+                    const left = now[j]
+                    const right = now[j+1]
+                    if(left > right){
+                        now[j] = right;
+                        now[j+1] = left;
+                    }
+                }//end for2.
+                let flag = false;
+                for(var c=0; c<now.length; c++){
+                    if(now[c] != prev[c]) {
+                        flag = true
+                        break;
+                    }
                 }
-
-                now[left + 1] = cur;
-
-                const tmp = []
-                for(var k=0; k<now.length; k++){
-                    tmp.push(now[k])
+                if(flag){
+                    const tmp = []
+                    for(var k=0; k<now.length; k++){
+                        tmp.push(now[k])
+                    }
+                    this.bubble_list.push(tmp)
                 }
-                this.insert_list.push(tmp)
-            }
+                else break;
+            }//end for1.
         },
         erase(){
             this.data = ""
             this.origin_list = []
             this.now_list = []
-            this.insert_list= []
-        },
+            this.bubble_list= []
+        }
     },
 }
 </script>
