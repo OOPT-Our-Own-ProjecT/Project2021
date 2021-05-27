@@ -9,8 +9,8 @@
         <div>
             <textarea v-model="priority"></textarea>
             <textarea v-model="value"></textarea>
-            <button @click="enqueue(priority,value)">ENQUEUE</button>
-            <button @click="dequeue()">DEQUEUE</button>
+            <button @click="enqueue(priority,value)">enqueue</button>
+            <button @click="dequeue()">dequeue</button>
         </div>
         <div>
             <div class="pq">
