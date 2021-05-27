@@ -4,16 +4,19 @@ import Router from 'vue-router'
 import Main from '@/views/test/main.vue'
 import SignUp from '@/views/account/signUp.vue'
 import LoginSuccess from '@/views/test/loginSuccess.vue'
+//main
 import Stack from '@/views/ds/stack.vue'
 import Queue from '@/views/ds/queue.vue'
 import Tree from '@/views/ds/tree.vue'
 import Heap from '@/views/ds/heap.vue'
+//data structure
 import PriorityQueue from '@/views/ds/priorityQueue.vue'
 import InsertionSort from '@/views/sort/insertionSort.vue'
 import SelectionSort from '@/views/sort/selectionSort.vue'
 import BubbleSort from '@/views/sort/bubbleSort.vue'
 import MergeSort from '@/views/sort/mergeSort.vue'
 import QuickSort from '@/views/sort/quickSort.vue'
+//sort
 //import Component
 
 Vue.use(Router)
