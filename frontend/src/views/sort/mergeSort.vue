@@ -68,11 +68,15 @@ export default {
             this.can_end = false
         },
         start(){
+            this.divide_list = []
+            this.can_merge = false
+            this.can_end = false
             const tmp_list = []
             for(var i=0; i<this.origin_list.length; i++){
                 tmp_list.push(this.origin_list[i])
             }
-            this.divide_list.push(tmp_list)
+            if(tmp_list.length==0) alert("데이터를 넣어주세요")
+            else this.divide_list.push(tmp_list)
         },
         divide(){
             const tmp_list = []
