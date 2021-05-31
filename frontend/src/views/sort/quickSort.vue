@@ -66,11 +66,14 @@ export default {
             this.can_end = false
         },
         start(){
+            this.divide_list = []
+            this.can_end = false
             const tmp_list = []
             for(var i=0; i<this.origin_list.length; i++){
                 tmp_list.push(this.origin_list[i])
             }
-            this.divide_list.push(tmp_list)
+            if(tmp_list.length==0) alert("데이터를 넣어주세요")
+            else this.divide_list.push(tmp_list)
         },
         divide(){
             const tmp_list = []
@@ -92,16 +95,20 @@ export default {
                     tmp_list.push(right)
                 }
                 else{
-                    const pivot = [list[0]]
+                    const pivot = list[0]
+                    const pivot_list = []
                     const left = [];
                     const right = [];
-                    for (var j = 1; j<list.length; j++) {
+                    for (var j = 0; j<list.length; j++) {
                         if (list[j] < pivot) left.push(list[j])
                         else if(list[j] > pivot) right.push(list[j]);
-                        else pivot.push(list[j])
+                        else pivot_list.push(list[j])
                     }
+                    console.log(left)
+                    console.log(pivot_list)
+                    console.log(right)
                     if(left.length>0)tmp_list.push(left)
-                    tmp_list.push(pivot)
+                    tmp_list.push(pivot_list)
                     if(right.length>0)tmp_list.push(right)
                 }
             }

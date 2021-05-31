@@ -17,6 +17,12 @@ import BubbleSort from '@/views/sort/bubbleSort.vue'
 import MergeSort from '@/views/sort/mergeSort.vue'
 import QuickSort from '@/views/sort/quickSort.vue'
 //sort
+import Dfs from '@/views/algorithm/dfs.vue'
+import Bfs from '@/views/algorithm/bfs.vue'
+import BinarySearch from '@/views/algorithm/binarySearch.vue'
+import BottomUp from '@/views/algorithm/bottomUp.vue'
+import TopDown from '@/views/algorithm/topDown.vue'
+//algorithm
 //import Component
 
 Vue.use(Router)
@@ -88,6 +94,31 @@ const routes = [
         path: '/quickSort',
         name: 'quickSort',
         component: QuickSort
+    },
+    {
+        path: '/dfs',
+        name: 'dfs',
+        component: Dfs
+    },
+    {
+        path: '/bfs',
+        name: 'bfs',
+        component: Bfs
+    },
+    {
+        path: '/binarySearch',
+        name: 'binarySearch',
+        component: BinarySearch
+    },
+    {
+        path: '/bottomUp',
+        name: 'bottomUp',
+        component: BottomUp
+    },
+    {
+        path: '/topDown',
+        name: 'topDown',
+        component: TopDown
     },
 
 ]
