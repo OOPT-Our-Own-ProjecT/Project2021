@@ -3,7 +3,7 @@
        <table id="nav">
             <tbody id="navInfo">
                 <td v-for="item in items" v-bind:key=item.titla>
-                    <button @click="move(item.path)">{{item.title}}</button>
+                    <button @click="move(item.path)" style="background-color: aqua;">{{item.title}}</button>
                 </td>
             </tbody>
         </table>
@@ -15,11 +15,11 @@ export default {
 	data () {
 		return {
             items: [
-                { title: 'Home', path: '/loginSuccess'},
-                { title: 'DataStructure', path: '/stack'},
-                { title: 'Sort', path: '/insertionSort'},
-                { title: 'Algorithm', path: '/dfs'},
-                { title: 'Menu 5', path: '/loginSuccess'},
+                { title: 'DFS', path: '/dfs'},
+                { title: 'BFS', path: '/bfs'},
+                { title: 'BinarySearch', path: '/binarySearch'},
+                { title: 'TopDown', path: '/topDown'},
+                { title: 'BottomUp', path: '/bottomUp'},
             ],
         }
     },
