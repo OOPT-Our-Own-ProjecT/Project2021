@@ -92,16 +92,20 @@ export default {
                     tmp_list.push(right)
                 }
                 else{
-                    const pivot = [list[0]]
+                    const pivot = list[0]
+                    const pivot_list = []
                     const left = [];
                     const right = [];
-                    for (var j = 1; j<list.length; j++) {
+                    for (var j = 0; j<list.length; j++) {
                         if (list[j] < pivot) left.push(list[j])
                         else if(list[j] > pivot) right.push(list[j]);
-                        else pivot.push(list[j])
+                        else pivot_list.push(list[j])
                     }
+                    console.log(left)
+                    console.log(pivot_list)
+                    console.log(right)
                     if(left.length>0)tmp_list.push(left)
-                    tmp_list.push(pivot)
+                    tmp_list.push(pivot_list)
                     if(right.length>0)tmp_list.push(right)
                 }
             }
