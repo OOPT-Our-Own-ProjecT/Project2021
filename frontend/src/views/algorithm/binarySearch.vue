@@ -152,7 +152,6 @@ export default {
                 time++
                 mid = Math.floor((this.left+this.right)/2)
             }
-            console.log(this.binary_list)
         }
     },
 }
