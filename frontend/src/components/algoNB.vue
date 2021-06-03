@@ -15,8 +15,8 @@ export default {
 	data () {
 		return {
             items: [
-                { title: 'DFS', path: '/dfs'},
-                { title: 'BFS', path: '/bfs'},
+                { title: 'DFS/BFS(1)', path: '/dfs'},
+                { title: 'DFS/BFS(2)', path: '/bfs'},
                 { title: 'BinarySearch', path: '/binarySearch'},
                 { title: 'TopDown', path: '/topDown'},
                 { title: 'BottomUp', path: '/bottomUp'},

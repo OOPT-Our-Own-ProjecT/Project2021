@@ -7,8 +7,8 @@
         </div>
         <h2>DFS</h2>
         <div>
-            <button @click="start()">dfs</button>
-            <button @click="start2()">bfs</button>
+            <button @click="start()">DFS</button>
+            <button @click="start2()">BFS</button>
             <button @click="initialize()">initialize</button>
             <br><br>
             <div class="row" v-for="(item,idx1) in item"  v-bind:key=idx1>
@@ -42,11 +42,7 @@ export default {
 
 	data () {
 		return {
-            item: [[0,9,10,19,20],
-                [1,8,11,18,21],
-                [2,7,12,17,22],
-                [3,6,13,16,23],
-                [4,5,14,15,24]],
+            item: [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],
             visited: [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],
             time: 0,
             direction: [[-1,0],[1,0],[0,-1],[0,1]],
@@ -57,10 +53,12 @@ export default {
     },
     methods: {
         start(){
+            this. item = [[0,9,10,19,20],[1,8,11,18,21],[2,7,12,17,22],[3,6,13,16,23],[4,5,14,15,24]]
             this.$set(this.visited[0], 0, 1)
             this.dfs(0,0)
         },
         start2(){
+            this. item = [[0,1,2,3,4],[1,2,3,4,5],[2,3,4,5,6],[3,4,5,6,7],[4,5,6,7,8]]
             this.$set(this.visited[0], 0, 1)
             this.bfs(0,0)
         },
@@ -81,9 +79,10 @@ export default {
                     this.$set(this.visited[nx], ny, 1)
                     this.dfs(nx,ny)
                 }
-            }, 100)
+            }, 50)
         },
         initialize(){
+            this.item = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
             this.visited = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
         },
         bfs(row,col){
@@ -96,7 +95,7 @@ export default {
                         this.bfs(dx,dy)
                     }
                 }//end for.
-            }, 100)
+            }, 150)
         }
     },
 }
