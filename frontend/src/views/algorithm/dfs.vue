@@ -5,7 +5,7 @@
             <br>
             <AlgoNB></AlgoNB>
         </div>
-        <h2>DFS</h2>
+        <h2>DFS/BFS(1)</h2>
         <div>
             <button @click="start()">DFS</button>
             <button @click="start2()">BFS</button>
