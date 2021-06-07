@@ -6,14 +6,15 @@
             <AlgoNB></AlgoNB>
         </div>
         <h2>BOTTOMUP</h2>
+        <h3>KnapSack Algorithm</h3>
         <div>
-            <textarea v-model="weight"></textarea>
-            <textarea v-model="price"></textarea>
+            무게 <textarea v-model="weight"></textarea>
+            가격 <textarea v-model="price"></textarea>
             <button @click="push(weight,price)">push</button>
             <button @click="erase()">erase</button>
             <div class="list">
                 <div>
-                    <textarea v-model="bag"></textarea>
+                    가방 용량<textarea v-model="bag"></textarea>
                     <button @click="dp(bag)">값 구하기</button>
                 </div>
                 <div class="listdata">
