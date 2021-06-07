@@ -26,7 +26,7 @@
         </div>
         <div>
             <h3>마지막 DEQUEUE</h3>
-            <div class="round" v-if="dequeue_data != undefined && dequeue_data !=''">{{dequeue_data.key}} , {{dequeue_data.value}}</div>
+            <div class="round_pq" v-if="dequeue_data != undefined && dequeue_data !=''">{{dequeue_data.key}} , {{dequeue_data.value}}</div>
         </div>
     </div>
 </template>
@@ -167,7 +167,7 @@ export default {
         width: 14%;
         float: left;
     }
-    .round{
+    .round_pq{
         background-color:aqua;
         border:1px solid black;
         width:100px; height:100px;
